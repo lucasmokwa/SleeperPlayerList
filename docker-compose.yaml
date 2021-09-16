@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:80"
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: "./backendSleeper"
+    volumes:
+      - /app/node_modules
+      - ./backendSleeper:/app
+
+  client:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      dockerfile: Dockerfile
+      context: ./sleeper
+    volumes:
+      - /app/node_modules
+      - ./sleeper:/app

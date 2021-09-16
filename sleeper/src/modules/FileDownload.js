@@ -22,7 +22,7 @@ class FileDownload extends React.Component {
   onClick = (e) => {
     e.preventDefault();
     axios({
-      url: "http://localhost:4001/getFile", //your url
+      url: "/api/getFile", //your url
       method: "GET",
       responseType: "blob",
       params: { leagueId: this.props.leagueId },

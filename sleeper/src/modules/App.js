@@ -51,7 +51,7 @@ class App extends React.Component {
 
   onLeagueSelected = async (id) => {
     this.setState({ selectedLeagueId: id.target.value, fileReady: false });
-    const response = await axios.get("http://localhost:4001/prepareFile", {
+    const response = await axios.get("/api/prepareFile", {
       params: { leagueId: id.target.value },
     });
     if (response.status === 200) {
