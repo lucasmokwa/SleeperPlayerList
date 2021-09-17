@@ -39,8 +39,8 @@ class csvGenerator {
         });
       }
     }
-    data.sort((a, b) => (a.Player > b.Player ? -1 : 1));
-    data.sort((a, b) => (a.Username > b.Username ? 1 : -1));
+    data.sort((a, b) => a.Player.localeCompare(b.Player));
+    data.sort((a, b) => a.Username.localeCompare(b.Username));
 
     writeToPath(path, data, options);
   }
