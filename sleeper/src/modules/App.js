@@ -125,10 +125,10 @@ class App extends React.Component {
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
 
-    if (month > 8) {
-      return year + 1;
-    } else {
+    if (month > 4) {
       return year;
+    } else {
+      return year - 1;
     }
   }
 }
